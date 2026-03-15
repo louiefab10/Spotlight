@@ -1,4 +1,4 @@
-const SPOTIFY_LOGIN_URL = "http://127.0.0.1:5001/auth/login";
+const SPOTIFY_LOGIN_URL = "https://spotlight-production-b4db.up.railway.app/auth/login";
 
 export default function LoginPage({ isDark }) {
     const today = new Date();

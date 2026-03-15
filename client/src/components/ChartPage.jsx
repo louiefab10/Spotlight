@@ -28,7 +28,7 @@ export default function ChartPage({ user }) {
             try {
                 console.log(user);
                 const res = await axios.get(
-                    `http://127.0.0.1:5001/chart/personal/${user.spotifyId}/${timeRange}`
+                    `https://spotlight-production-b4db.up.railway.app/chart/personal/${user.spotifyId}/${timeRange}`
                 );
                 setChart(res.data.chart);
             } catch (err) {
