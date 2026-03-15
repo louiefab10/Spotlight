@@ -47,7 +47,7 @@ router.get('/callback', async (req, res) => {
             { upsert: true, new: true }
         );
         //res.json({ message: 'Login successful', user: profile.display_name });
-        res.redirect(`http://localhost:5173?spotifyId=${profile.id}&displayName=${encodeURIComponent(profile.display_name)}`);
+        res.redirect(`${process.env.CLIENT_URL}?spotifyId=${profile.id}&displayName=${encodeURIComponent(profile.display_name)}`);
     } catch (err) {
         res.status(500).json({ error: 'Failed to get token' });
     }
