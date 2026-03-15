@@ -1,0 +1,729 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;700&family=Oswald:wght@400;600;700&display=swap');
+
+:root {
+  --gold: #f0c040;
+  --gold-dim: #c9962a;
+  --navy: #0a0e1a;
+  --navy-mid: #111827;
+  --navy-card: #16213e;
+  --navy-border: #1e2d4a;
+  --white: #ffffff;
+  --white-dim: #c8d6f0;
+  --accent-blue: #4a90d9;
+  --rank-1: #f0c040;
+  --rank-2: #b0bec5;
+  --rank-3: #cd7f32;
+  --red: #e53e3e;
+  --green: #38a169;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* DARK THEME */
+.app.dark {
+  background: var(--navy);
+  color: var(--white);
+  min-height: 100vh;
+}
+
+.app.dark .card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+}
+
+.app.dark .subtitle {
+  color: var(--white-dim);
+}
+
+.app.dark .chart-row:hover {
+  background: rgba(74, 144, 217, 0.08);
+}
+
+.app.dark .divider {
+  border-color: var(--navy-border);
+}
+
+.app.dark .time-btn {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  color: var(--white-dim);
+}
+
+.app.dark .time-btn.active {
+  background: var(--green);
+  color: var(--navy);
+  border-color: var(--green);
+}
+
+.app.dark .time-btn:hover:not(.active) {
+  border-color: var(--accent-blue);
+  color: var(--white);
+}
+
+/* LIGHT THEME */
+.app.light {
+  background: #f0f4ff;
+  color: #0a0e1a;
+  min-height: 100vh;
+}
+
+.app.light .card {
+  background: #ffffff;
+  border: 1px solid #d0daf0;
+  box-shadow: 0 2px 12px rgba(10, 14, 26, 0.08);
+}
+
+.app.light .subtitle {
+  color: #4a5568;
+}
+
+.app.light .chart-row:hover {
+  background: rgba(74, 144, 217, 0.06);
+}
+
+.app.light .divider {
+  border-color: #d0daf0;
+}
+
+.app.light .time-btn {
+  background: #ffffff;
+  border: 1px solid #d0daf0;
+  color: #4a5568;
+}
+
+.app.light .time-btn.active {
+  background: var(--navy);
+  color: var(--green);
+  border-color: var(--navy);
+}
+
+.app.light .time-btn:hover:not(.active) {
+  border-color: var(--accent-blue);
+  color: #0a0e1a;
+}
+
+/* SHARED STYLES */
+.app-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+/* HEADER */
+.header {
+  padding: 0 24px;
+  border-bottom: 2px solid var(--green);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+}
+
+.app.dark .header {
+  background: rgba(10, 14, 26, 0.92);
+}
+
+.app.light .header {
+  background: rgba(240, 244, 255, 0.92);
+}
+
+.header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 2rem;
+  letter-spacing: 4px;
+  color: var(--green);
+  text-transform: uppercase;
+}
+
+.logo span {
+  color: var(--white);
+}
+
+.app.light .logo span {
+  color: var(--navy);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--green);
+  color: var(--green);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--green);
+  color: var(--navy);
+}
+
+.user-badge {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  color: var(--white-dim);
+  text-transform: uppercase;
+}
+
+.app.light .user-badge {
+  color: #4a5568;
+}
+
+/* LOGIN PAGE */
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 64px);
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.login-show-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 10vw, 7rem);
+  letter-spacing: 8px;
+  line-height: 1;
+  color: var(--green);
+  text-shadow: 0 0 60px rgba(50, 242, 100, 0.4);
+  margin-bottom: 8px;
+  animation: fadeInDown 0.8s ease both;
+}
+
+.login-show-title span {
+  color: white;
+}
+
+.app.light .login-show-title span {
+  color: var(--navy);
+}
+
+.login-subtitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 48px;
+  animation: fadeInDown 0.8s 0.2s ease both;
+}
+
+.app.dark .login-subtitle {
+  color: var(--white-dim);
+}
+
+.app.light .login-subtitle {
+  color: #4a5568;
+}
+
+.login-card {
+  padding: 48px;
+  border-radius: 4px;
+  max-width: 440px;
+  width: 100%;
+  animation: fadeInUp 0.8s 0.4s ease both;
+}
+
+.login-desc {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+
+.app.dark .login-desc {
+  color: var(--white-dim);
+}
+
+.app.light .login-desc {
+  color: #4a5568;
+}
+
+.spotify-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #1db954;
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 2px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.spotify-btn:hover {
+  background: #17a349;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(29, 185, 84, 0.3);
+}
+
+/* CHART PAGE */
+.chart-header {
+  padding: 40px 0 32px;
+}
+
+.show-label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+
+.chart-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: 4px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.chart-episode {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.app.dark .chart-episode {
+  color: var(--white-dim);
+}
+
+.app.light .chart-episode {
+  color: #4a5568;
+}
+
+/* TIME RANGE SELECTOR */
+.time-selector {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.time-btn {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* CHART TABLE */
+.chart-card {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.chart-table-header {
+  display: grid;
+  grid-template-columns: 60px 56px 1fr 140px;
+  padding: 12px 20px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--green);
+  border-bottom: 1px solid;
+}
+
+.app.dark .chart-table-header {
+  border-color: var(--navy-border);
+}
+
+.app.light .chart-table-header {
+  border-color: #d0daf0;
+}
+
+.chart-row {
+  display: grid;
+  grid-template-columns: 60px 56px 1fr 140px;
+  padding: 12px 20px;
+  align-items: center;
+  border-bottom: 1px solid;
+  transition: background 0.15s ease;
+  animation: fadeInUp 0.4s ease both;
+}
+
+.app.dark .chart-row {
+  border-color: rgba(30, 45, 74, 0.6);
+}
+
+.app.light .chart-row {
+  border-color: #e8eef8;
+}
+
+.chart-row:last-child {
+  border-bottom: none;
+}
+
+.rank-number {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.rank-1 { color: var(--rank-1); }
+.rank-2 { color: var(--rank-2); }
+.rank-3 { color: var(--rank-3); }
+.rank-other { color: var(--accent-blue); }
+
+.album-art {
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+.album-art-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  background: var(--navy-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.track-info {
+  padding: 0 12px;
+  overflow: hidden;
+}
+
+.track-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-artist {
+  font-size: 0.78rem;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app.dark .track-artist {
+  color: var(--white-dim);
+}
+
+.app.light .track-artist {
+  color: #4a5568;
+}
+
+.spotify-link-btn {
+  color: #1db954;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #1db954;
+  transition: all 0.2s ease;
+}
+
+.spotify-link-btn:hover {
+  background: #1db954;
+  color: white;
+}
+/* LOADING */
+.loading-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
+  gap: 16px;
+}
+
+.loading-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.5rem;
+  letter-spacing: 4px;
+  color: var(--green);
+  animation: pulse 1.2s ease infinite;
+}
+
+/* DIVIDER */
+.divider {
+  border: none;
+  border-top: 1px solid;
+  margin: 32px 0;
+}
+
+/* ANIMATIONS */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* TOGGLE SWITCH */
+.toggle-switch {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  cursor: pointer;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  border-radius: 26px;
+  transition: background 0.2s ease;
+  background: #4a5568;
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  left: 3px;
+  top: 3px;
+  transition: transform 0.2s ease;
+}
+
+input:checked + .toggle-slider {
+  background: var(--green);
+}
+
+input:checked + .toggle-slider::before {
+  transform: translateX(22px);
+}
+
+/* TOP 3 SECTION */
+.top3-section {
+  margin-bottom: 32px;
+}
+
+.top3-label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.top3-podium {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.top3-card {
+  border-radius: 4px;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.top3-card:hover {
+  transform: translateY(-4px);
+}
+
+.top3-center {
+  padding: 28px 20px;
+}
+
+.app.dark .top3-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+}
+
+.app.light .top3-card {
+  background: #ffffff;
+  border: 1px solid #d0daf0;
+  box-shadow: 0 2px 12px rgba(10, 14, 26, 0.08);
+}
+
+.app.dark .top3-center {
+  border-color: var(--gold);
+  box-shadow: 0 0 32px rgba(240, 192, 64, 0.12);
+}
+
+.app.light .top3-center {
+  border-color: var(--gold);
+  box-shadow: 0 0 32px rgba(240, 192, 64, 0.2);
+}
+
+.top3-rank-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+
+.top3-rank {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.top3-art-wrap {
+  position: relative;
+}
+
+.top3-art {
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.top3-center .top3-art {
+  width: 130px;
+  height: 130px;
+}
+
+.top3-art-placeholder {
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+  background: var(--navy-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.top3-spotlight {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(ellipse, rgba(240, 192, 64, 0.25) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.top3-info {
+  width: 100%;
+}
+
+.top3-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.top3-center .top3-title {
+  font-size: 1rem;
+}
+
+.top3-artist {
+  font-size: 0.75rem;
+  margin-top: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app.dark .top3-artist {
+  color: var(--white-dim);
+}
+
+.app.light .top3-artist {
+  color: #4a5568;
+}
+
+.top3-spotify-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #1db954;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid #1db954;
+  padding: 5px 10px;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.top3-spotify-btn:hover {
+  background: #1db954;
+  color: white;
+}
+
